@@ -295,7 +295,7 @@ $licenseTypeList = $Dependencies.Keys | Sort-Object
 
 # Suppress noisy output of AppendLine() on StringBuilders
 $null = foreach ($type in $licenseTypeList) {
-    $packageList = $Dependencies.$type | Sort-Object -Property Package
+    $packageList = $Dependencies.$type | Sort-Object -Property { $_.Package -split '[-/@]+' }
 
     $name = $type
     $licenseTexts = @()
